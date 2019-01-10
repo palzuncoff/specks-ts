@@ -4,8 +4,21 @@ import 'jsdom-global/register';
 import * as React from 'react';
 import App from './App';
 import * as collection from './constants';
+// import LocalStorageMock from './utils/local-storage-mock';
 
 Enzyme.configure({ adapter: new Adapter() });
+// global.window = { localStorage }
+//
+// export interface IWindow {
+//     localStorage: any
+// }
+//
+// export interface IGlobal {
+//     window: IWindow;
+// }
+//
+// let global: IGlobal;
+
 
 describe('<App/>', () => {
     function setUp(): any {
@@ -19,6 +32,8 @@ describe('<App/>', () => {
         return component
     }
     it('should move speck down', () => {
+        // global.window = { ...global.window, localStorage: LocalStorageMock }
+        // console.log(global.window.localStorage);
         const component: any = setUp();
         const button: any = component.find('button').at(3);
         expect(component.state().field[0]).toEqual(collection.END_GAME[0]);
