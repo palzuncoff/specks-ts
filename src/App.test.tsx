@@ -9,7 +9,14 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('<App/>', () => {
     function setUp(): any {
-        return Enzyme.mount(<App/>, {})
+        const component  = Enzyme.mount(<App/>)
+        component.setState({ field: {
+            0: [1, 2, 3, 4],
+            1: [5, 6, 0, 8],
+            2: [9, 10, 11, 12],
+            3: [13, 14, 15, 7],
+        }});
+        return component
     }
     it('should move speck down', () => {
         const component: any = setUp();

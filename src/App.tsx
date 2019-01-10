@@ -7,7 +7,7 @@ import * as utils from './utils';
 class App extends React.Component {
 
     public state: IGame = {
-        field: collection.END_GAME
+        field: { ...collection.END_GAME }
     };
 
     public render() {
