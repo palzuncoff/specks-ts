@@ -4,36 +4,23 @@ import 'jsdom-global/register';
 import * as React from 'react';
 import App from './App';
 import * as collection from './constants';
-// import LocalStorageMock from './utils/local-storage-mock';
 
 Enzyme.configure({ adapter: new Adapter() });
-// global.window = { localStorage }
-//
-// export interface IWindow {
-//     localStorage: any
-// }
-//
-// export interface IGlobal {
-//     window: IWindow;
-// }
-//
-// let global: IGlobal;
 
+export interface IGlobal {
+    localStorage: any;
+}
+
+const defaultField: string = JSON.stringify(collection.END_GAME);
 
 describe('<App/>', () => {
     function setUp(): any {
-        const component  = Enzyme.mount(<App/>)
-        component.setState({ field: {
-            0: [1, 2, 3, 4],
-            1: [5, 6, 0, 8],
-            2: [9, 10, 11, 12],
-            3: [13, 14, 15, 7],
-        }});
-        return component
+        return Enzyme.mount(<App/>)
     }
+    beforeEach(() => {
+        localStorage.setItem('field', defaultField);
+    });
     it('should move speck down', () => {
-        // global.window = { ...global.window, localStorage: LocalStorageMock }
-        // console.log(global.window.localStorage);
         const component: any = setUp();
         const button: any = component.find('button').at(3);
         expect(component.state().field[0]).toEqual(collection.END_GAME[0]);
