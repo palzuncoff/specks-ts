@@ -28,7 +28,7 @@ class App extends React.Component {
         return (
             <div className="App">
                 <PassCount />
-              <button onClick={this.startGame}>New Game</button>
+                <button className="test-new-game" onClick={this.startGame}>New Game</button>
                 {Object.keys(this.state.field).map(key => (
                     <Row
                         key={key}

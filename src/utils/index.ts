@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import * as collection from '../constants';
 
 export function startGame(): IRows {
+    localStorage.setItem('pass', '0');
     const random: number[] = _.shuffle(collection.SPECS_COLLECTION);
     return {
         0: random.slice(0, 4),

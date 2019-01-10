@@ -5,3 +5,15 @@ export const END_GAME: IRows = {
     2: [9, 10, 11, 12],
     3: [13, 14, 15, 7],
 };
+export const WIN: string = JSON.stringify({
+    0: [1, 2, 3, 4],
+    1: [5, 6, 7, 8],
+    2: [9, 10, 11, 12],
+    3: [13, 14, 15, 0],
+});
+export const passToWin: IRows = {
+    0: [1, 2, 3, 4],
+    1: [5, 6, 7, 8],
+    2: [9, 10, 11, 0],
+    3: [13, 14, 15, 12],
+};

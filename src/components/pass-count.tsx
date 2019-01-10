@@ -10,7 +10,7 @@ class PassCount extends React.Component {
     }
 
     public componentDidUpdate(prevProps: any, prevState: any, snapshot?: any): void {
-        const pass = localStorage.getItem('pass') || '0'
+        const pass = localStorage.getItem('pass') || '0';
         if (prevState.pass !== pass) {
             this.setState({ pass: localStorage.getItem('pass') || '0' })
         }
@@ -18,7 +18,7 @@ class PassCount extends React.Component {
 
     public render() {
         return (
-            <div>{this.state.pass}</div>
+            <div className="test-pass-count-class" >{this.state.pass}</div>
         )
     }
 }

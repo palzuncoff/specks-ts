@@ -19,6 +19,7 @@ describe('<App/>', () => {
     }
     beforeEach(() => {
         localStorage.setItem('field', defaultField);
+        localStorage.setItem('pass', '0');
     });
     it('should move speck down', () => {
         const component: any = setUp();
@@ -51,11 +52,24 @@ describe('<App/>', () => {
         expect(component.state().field[1]).toEqual(collection.END_GAME[1]);
         button.simulate('click');
         expect(component.state().field[1]).toEqual([5, 0, 6, 8]);
-    })
+    });
     it('should store pass', () => {
         const component: any = setUp();
         const button: any = component.find('button').at(6);
         button.simulate('click');
         expect(localStorage.getItem('pass')).toEqual('1');
+    });
+    it('should show passes count', () => {
+        const component: any = setUp();
+        const button: any = component.find('button').at(6);
+        button.simulate('click');
+        expect(component.find('.test-pass-count-class').text()).toEqual('1');
+    });
+    it('should reset count', () => {
+        localStorage.setItem('pass', '5');
+        const component: any = setUp();
+        const button: any = component.find('.test-new-game');
+        button.simulate('click');
+        expect(component.find('.test-pass-count-class').text()).toEqual('0');
     })
 });
