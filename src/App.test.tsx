@@ -52,4 +52,10 @@ describe('<App/>', () => {
         button.simulate('click');
         expect(component.state().field[1]).toEqual([5, 0, 6, 8]);
     })
+    it('should store pass', () => {
+        const component: any = setUp();
+        const button: any = component.find('button').at(6);
+        button.simulate('click');
+        expect(localStorage.getItem('pass')).toEqual('1');
+    })
 });

@@ -8,3 +8,7 @@ interface IRows {
 interface IGame {
     field: IRows;
 }
+
+interface ICount {
+    pass: string;
+}

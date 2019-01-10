@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
-import Row from './components/row'
+import PassCount from './components/pass-count';
+import Row from './components/row';
 import * as utils from './utils';
 
 class App extends React.Component {
@@ -26,6 +27,7 @@ class App extends React.Component {
     public render() {
         return (
             <div className="App">
+                <PassCount />
               <button onClick={this.startGame}>New Game</button>
                 {Object.keys(this.state.field).map(key => (
                     <Row

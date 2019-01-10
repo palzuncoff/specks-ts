@@ -19,7 +19,7 @@ export function pass(x: number, y: number, field: IRows, value: number): IRows {
         };
         nextField[y][x] = 0;
         nextField[index[0]][index[1]] = value;
-        storePass()
+        storePass();
 
         return nextField;
     }
