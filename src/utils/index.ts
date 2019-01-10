@@ -19,6 +19,7 @@ export function pass(x: number, y: number, field: IRows, value: number): IRows {
         };
         nextField[y][x] = 0;
         nextField[index[0]][index[1]] = value;
+        storePass()
 
         return nextField;
     }
@@ -51,4 +52,10 @@ export function wereMove(x: number, y: number, field: IRows): number[] {
         }
     }
     return [-1]
+}
+
+export function storePass(): void {
+    const last: string = localStorage.getItem('pass') || '0';
+    const next: number = Number.parseInt(last, 10) + 1;
+    localStorage.setItem('pass', next.toString());
 }
