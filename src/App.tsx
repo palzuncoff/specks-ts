@@ -1,35 +1,57 @@
 import * as React from 'react';
 import './App.css';
 import Row from './components/row'
-import * as collection from './constants';
 import * as utils from './utils';
 
 class App extends React.Component {
 
     public state: IGame = {
-        field: { ...collection.END_GAME }
+        field: {
+            0: [],
+            1: [],
+            2: [],
+            3: [],
+        }
     };
+
+    public componentDidMount(): void {
+        const fieldJSON: string | null = localStorage.getItem('field');
+        if (fieldJSON !== null) {
+            this.setField(JSON.parse(fieldJSON))
+        } else {
+            this.startGame()
+        }
+    }
 
     public render() {
         return (
             <div className="App">
               <button onClick={this.startGame}>New Game</button>
-                <Row updateField={this.updateField} rowIndex={0} row={this.state.field[0]}/>
-                <Row updateField={this.updateField} rowIndex={1} row={this.state.field[1]}/>
-                <Row updateField={this.updateField} rowIndex={2} row={this.state.field[2]}/>
-                <Row updateField={this.updateField} rowIndex={3} row={this.state.field[3]}/>
+                {Object.keys(this.state.field).map(key => (
+                    <Row
+                        key={key}
+                        updateField={this.updateField}
+                        rowIndex={+key}
+                        row={this.state.field[key]}/>
+                ))}
             </div>
         );
     }
 
     private startGame = (): void => {
         const field: IRows = utils.startGame();
-        this.setState({ field })
-    }
+        this.setField(field);
+    };
 
     private updateField = (columnIndex: number, rowIndex: number, value: number): void => {
         const field = utils.pass(columnIndex, rowIndex, this.state.field, value);
-        this.setState({ field })
+        this.setField(field);
+    };
+
+    private setField = (field: IRows): void => {
+        this.setState({ field }, () => {
+            localStorage.setItem('field', JSON.stringify(this.state.field))
+        })
     }
 }
 
