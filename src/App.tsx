@@ -8,6 +8,7 @@ import * as utils from './utils';
 class App extends React.Component {
 
     public state: IGame = {
+        end: false,
         error: null,
         field: {
             0: [],
@@ -39,6 +40,7 @@ class App extends React.Component {
                         rowIndex={+key}
                         row={this.state.field[key]}
                         raver={this.state.raver}
+                        end={this.state.end}
                     />
                 ))}
             </div>
@@ -51,12 +53,18 @@ class App extends React.Component {
         utils.delay(collection.SPECS_COLLECTION, this.setRaver).catch(error => {
             this.setState({ error });
             throw error;
-        })
+        }).then(() => this.setState({ end: false }))
     };
 
     private updateField = (columnIndex: number, rowIndex: number, value: number): void => {
         const field = utils.pass(columnIndex, rowIndex, this.state.field, value);
-        this.setField(field);
+        this.setField(field[0]);
+        if (field[1]) {
+            utils.delay(collection.SPECS_COLLECTION, this.setRaver).catch(error => {
+                this.setState({ error });
+                throw error;
+            }).then(() => this.setState({ end: true }))
+        }
     };
 
     private setField = (field: IRows): void => {

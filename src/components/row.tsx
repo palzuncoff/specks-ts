@@ -2,6 +2,7 @@ import * as React from 'react';
 import Speck from './speck';
 
 export interface IRow {
+    end: boolean;
     raver: number;
     row: number[];
     rowIndex: number;
@@ -20,6 +21,7 @@ class Row extends React.Component<IRow> {
                         key={sp}
                         value={sp}
                         raver={this.props.raver}
+                        end={this.props.end}
                     />
                 ))}
             </div>

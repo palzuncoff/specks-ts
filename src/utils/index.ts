@@ -12,7 +12,7 @@ export function startGame(): IRows {
     }
 }
 
-export function pass(x: number, y: number, field: IRows, value: number): IRows {
+export function pass(x: number, y: number, field: IRows, value: number): [IRows, boolean] {
     const index: number[] = wereMove(x, y, field);
     if (index[0] > -1) {
         const nextField: IRows = {
@@ -22,9 +22,9 @@ export function pass(x: number, y: number, field: IRows, value: number): IRows {
         nextField[index[0]][index[1]] = value;
         storePass();
 
-        return nextField;
+        return [nextField, JSON.stringify(nextField) === collection.WIN];
     }
-    return field;
+    return [field, false];
 }
 
 export function wereMove(x: number, y: number, field: IRows): number[] {

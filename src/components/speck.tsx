@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export interface ISpeck {
+    end: boolean;
     raver: number;
     value: number;
     rowIndex: number;
@@ -12,8 +13,16 @@ class Speck extends React.Component<ISpeck> {
     public render() {
         return (
             <button
-                style={{ width: '60px', height: '60px', borderStyle: 'solid', backgroundColor: this.onRave() }}
+                style={{
+                    backgroundColor: this.color(),
+                    borderStyle: 'solid',
+                    color: 'yellow',
+                    fontSize: 30,
+                    height: '60px',
+                    width: '60px',
+                }}
                 onClick={this.handleOnMove}
+                disabled={this.props.end}
             >
                 {this.props.value !== 0 ? this.props.value : null}
             </button>
@@ -22,11 +31,12 @@ class Speck extends React.Component<ISpeck> {
 
     private handleOnMove = (): void => {
         this.props.updateField(this.props.columnIndex, this.props.rowIndex, this.props.value)
-    }
+    };
 
-    private onRave = (): string => {
+    private color = (): string => {
         const { raver, value } = this.props;
-        return raver === value && raver !== 0 ? 'red' : 'grey'
+        if (value === 0) { return 'white' }
+        return raver === value ? 'red' : 'grey'
     }
 }
 

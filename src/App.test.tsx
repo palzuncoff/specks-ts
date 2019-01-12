@@ -72,8 +72,7 @@ describe('<App/>', () => {
         button.simulate('click');
         expect(component.find('.test-pass-count-class').text()).toEqual('0');
     });
-    it('should raver up after 5000', (done) => {
-        // jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
+    it('should raver up after collection.TIME_OUT', (done) => {
         const component: any = setUp();
         component.find('.test-new-game').simulate('click');
         expect(component.state().raver).toEqual(0);

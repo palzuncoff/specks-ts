@@ -8,7 +8,8 @@ interface IRows {
 interface IGame {
     field: IRows;
     raver: number;
-    error: any | null;
+    error: any;
+    end: boolean;
 }
 
 interface ICount {
