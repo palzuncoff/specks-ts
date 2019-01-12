@@ -21,6 +21,7 @@ class Speck extends React.Component<ISpeck> {
                     height: '60px',
                     width: '60px',
                 }}
+                className="test-speck-btn"
                 onClick={this.handleOnMove}
                 disabled={this.props.end}
             >

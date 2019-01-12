@@ -19,7 +19,7 @@ describe('<App/>', () => {
     });
     it('should move speck down', () => {
         const component: any = setUp();
-        const button: any = component.find('button').at(3);
+        const button: any = component.find('.test-speck-btn').at(2);
         expect(component.state().field[0]).toEqual(collection.END_GAME[0]);
         expect(component.state().field[1]).toEqual(collection.END_GAME[1]);
         button.simulate('click');
@@ -28,7 +28,7 @@ describe('<App/>', () => {
     });
     it('should move speck up', () => {
         const component: any = setUp();
-        const button: any = component.find('button').at(11);
+        const button: any = component.find('.test-speck-btn').at(10);
         expect(component.state().field[1]).toEqual(collection.END_GAME[1]);
         expect(component.state().field[2]).toEqual(collection.END_GAME[2]);
         button.simulate('click');
@@ -37,27 +37,27 @@ describe('<App/>', () => {
     });
     it('should move speck left', () => {
         const component: any = setUp();
-        const button: any = component.find('button').at(8);
+        const button: any = component.find('.test-speck-btn').at(7);
         expect(component.state().field[1]).toEqual(collection.END_GAME[1]);
         button.simulate('click');
         expect(component.state().field[1]).toEqual([5, 6, 8, 0]);
     });
     it('should move speck right', () => {
         const component: any = setUp();
-        const button: any = component.find('button').at(6);
+        const button: any = component.find('.test-speck-btn').at(5);
         expect(component.state().field[1]).toEqual(collection.END_GAME[1]);
         button.simulate('click');
         expect(component.state().field[1]).toEqual([5, 0, 6, 8]);
     });
     it('should store pass', () => {
         const component: any = setUp();
-        const button: any = component.find('button').at(6);
+        const button: any = component.find('.test-speck-btn').at(5);
         button.simulate('click');
         expect(localStorage.getItem('pass')).toEqual('1');
     });
     it('should show passes count', () => {
         const component: any = setUp();
-        const button: any = component.find('button').at(6);
+        const button: any = component.find('.test-speck-btn').at(5);
         button.simulate('click');
         expect(component.find('.test-pass-count-class').text()).toEqual('1');
     });
@@ -89,7 +89,7 @@ describe('<App/>', () => {
     it('should set end game', (done) => {
         localStorage.setItem('field', collection.PASS_TO_WIN);
         const component: any = setUp();
-        const button: any = component.find('button').last();
+        const button: any = component.find('.test-speck-btn').last();
         button.simulate('click');
         expect(component.state().end).toEqual(false);
         setTimeout(() => {
@@ -100,7 +100,7 @@ describe('<App/>', () => {
     it('should set best score', (done) => {
         localStorage.setItem('field', collection.PASS_TO_WIN);
         const component: any = setUp();
-        const button: any = component.find('button').last();
+        const button: any = component.find('.test-speck-btn').last();
         button.simulate('click');
         setTimeout(() => {
             expect(localStorage.getItem('best')).toEqual('1');
@@ -110,12 +110,20 @@ describe('<App/>', () => {
     it('should start rave on win', (done) => {
         localStorage.setItem('field', collection.PASS_TO_WIN);
         const component: any = setUp();
-        const button: any = component.find('button').last();
+        const button: any = component.find('.test-speck-btn').last();
         button.simulate('click');
         expect(component.state().raver).toEqual(0);
         setTimeout(() => {
             expect(component.state().raver).toEqual(2);
             done()
         }, collection.TIME_OUT * 3);
+    });
+    it('should desabled specks when win', () => {
+        const component: any = setUp();
+        component.setState({ end: true });
+        component.find('.test-speck-btn').forEach((node: any): void => {
+            expect(node.prop('disabled')).toEqual(true);
+        });
+
     })
 });
