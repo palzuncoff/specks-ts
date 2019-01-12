@@ -68,3 +68,11 @@ export async function delay(arr: number[], callback: any) {
         await callback(arr[index], index, arr);
     }
 }
+
+export function storeBestScore() {
+    const past: string | null = localStorage.getItem('best');
+    const next: string = localStorage.getItem('pass') || 'Infinity';
+    if (!past || +next < +past) {
+        localStorage.setItem('best', next.toString());
+    }
+}

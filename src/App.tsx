@@ -60,10 +60,17 @@ class App extends React.Component {
         const field = utils.pass(columnIndex, rowIndex, this.state.field, value);
         this.setField(field[0]);
         if (field[1]) {
-            utils.delay(collection.SPECS_COLLECTION, this.setRaver).catch(error => {
-                this.setState({ error });
-                throw error;
-            }).then(() => this.setState({ end: true }))
+            utils.delay(collection.SPECS_COLLECTION, this.setRaver)
+                .catch(error => {
+                    this.setState({ error });
+                    throw error;
+                })
+                .then(() => this.setState({ end: true }))
+                .catch(error => {
+                    this.setState({ error });
+                    throw error;
+                })
+                .then(() => utils.storeBestScore())
         }
     };
 
