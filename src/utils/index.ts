@@ -60,3 +60,11 @@ export function storePass(): void {
     const next: number = Number.parseInt(last, 10) + 1;
     localStorage.setItem('pass', next.toString());
 }
+
+export const waitFor = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+export async function delay(arr: number[], callback: any) {
+    for (let index: number = 0; index < arr.length; index++) {
+        await callback(arr[index], index, arr);
+    }
+}

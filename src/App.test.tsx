@@ -71,5 +71,16 @@ describe('<App/>', () => {
         const button: any = component.find('.test-new-game');
         button.simulate('click');
         expect(component.find('.test-pass-count-class').text()).toEqual('0');
+    });
+    it('should raver up after 5000', (done) => {
+        // jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
+        const component: any = setUp();
+        component.find('.test-new-game').simulate('click');
+        expect(component.state().raver).toEqual(0);
+        setTimeout(() => {
+            expect(component.state().raver).toEqual(2);
+            component.unmount();
+            done();
+        }, collection.TIME_OUT * 2);
     })
 });

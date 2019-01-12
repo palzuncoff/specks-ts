@@ -2,17 +2,20 @@ import * as React from 'react';
 import './App.css';
 import PassCount from './components/pass-count';
 import Row from './components/row';
+import * as collection from './constants';
 import * as utils from './utils';
 
 class App extends React.Component {
 
     public state: IGame = {
+        error: null,
         field: {
             0: [],
             1: [],
             2: [],
             3: [],
-        }
+        },
+        raver: 0,
     };
 
     public componentDidMount(): void {
@@ -34,7 +37,9 @@ class App extends React.Component {
                         key={key}
                         updateField={this.updateField}
                         rowIndex={+key}
-                        row={this.state.field[key]}/>
+                        row={this.state.field[key]}
+                        raver={this.state.raver}
+                    />
                 ))}
             </div>
         );
@@ -43,6 +48,10 @@ class App extends React.Component {
     private startGame = (): void => {
         const field: IRows = utils.startGame();
         this.setField(field);
+        utils.delay(collection.SPECS_COLLECTION, this.setRaver).catch(error => {
+            this.setState({ error });
+            throw error;
+        })
     };
 
     private updateField = (columnIndex: number, rowIndex: number, value: number): void => {
@@ -54,6 +63,11 @@ class App extends React.Component {
         this.setState({ field }, () => {
             localStorage.setItem('field', JSON.stringify(this.state.field))
         })
+    };
+
+    private setRaver = async (raver: number) => {
+        await utils.waitFor(collection.TIME_OUT);
+        this.setState({ raver })
     }
 }
 
