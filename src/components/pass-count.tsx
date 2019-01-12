@@ -18,7 +18,7 @@ class PassCount extends React.Component {
 
     public render() {
         return (
-            <div className="test-pass-count-class" >{this.state.pass}</div>
+            <div className="test-pass-count-class" >Pass# {this.state.pass}</div>
         )
     }
 }

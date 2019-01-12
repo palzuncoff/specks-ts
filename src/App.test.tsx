@@ -59,14 +59,14 @@ describe('<App/>', () => {
         const component: any = setUp();
         const button: any = component.find('.test-speck-btn').at(5);
         button.simulate('click');
-        expect(component.find('.test-pass-count-class').text()).toEqual('1');
+        expect(component.find('.test-pass-count-class').text()).toEqual('Pass# 1');
     });
     it('should reset count', () => {
         localStorage.setItem('pass', '5');
         const component: any = setUp();
         const button: any = component.find('.test-new-game');
         button.simulate('click');
-        expect(component.find('.test-pass-count-class').text()).toEqual('0');
+        expect(component.find('.test-pass-count-class').text()).toEqual('Pass# 0');
     });
     it('should raver up after collection.TIME_OUT', (done) => {
         const component: any = setUp();
@@ -75,7 +75,7 @@ describe('<App/>', () => {
         setTimeout(() => {
             expect(component.state().raver).toEqual(2);
             done();
-        }, collection.TIME_OUT * 2);
+        }, collection.TIME_OUT * 3);
     });
     it('should set end to false', (done) => {
         const component: any = setUp();
@@ -125,5 +125,10 @@ describe('<App/>', () => {
             expect(node.prop('disabled')).toEqual(true);
         });
 
-    })
+    });
+    it('should show best score', () => {
+        localStorage.setItem('best', '10');
+        const component: any = setUp();
+        expect(component.find('.test-best-score').text()).toEqual('Best result: 10 passes')
+    });
 });

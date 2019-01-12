@@ -10,16 +10,9 @@ class BestScore extends React.Component {
         this.setState({ bestScore: score || 'first game' })
     }
 
-    public componentDidUpdate(prevProps: any, prevState: Readonly<IBestScore>): void {
-        const score: string | null = localStorage.getItem('best');
-        if (prevState.bestScore !== score) {
-            this.setState({ bestScore: score || 'first game' })
-        }
-    }
-
     public render(): React.ReactNode {
         return (
-            <div>{this.state.bestScore}</div>
+            <div className="test-best-score" >Best result: {this.state.bestScore} passes</div>
         );
     }
 }
