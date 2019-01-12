@@ -15,3 +15,7 @@ interface IGame {
 interface ICount {
     pass: string;
 }
+
+interface IBestScore {
+    bestScore: string;
+}

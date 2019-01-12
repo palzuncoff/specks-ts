@@ -84,7 +84,7 @@ describe('<App/>', () => {
         setTimeout(() => {
             expect(component.state().end).toEqual(false);
             done();
-        }, collection.TIME_OUT * 20);
+        }, collection.TIME_OUT * 18);
     });
     it('should set end game', (done) => {
         localStorage.setItem('field', collection.PASS_TO_WIN);
@@ -95,7 +95,7 @@ describe('<App/>', () => {
         setTimeout(() => {
             expect(component.state().end).toEqual(true);
             done()
-        }, collection.TIME_OUT * 17);
+        }, collection.TIME_OUT * 18);
     });
     it('should set best score', (done) => {
         localStorage.setItem('field', collection.PASS_TO_WIN);

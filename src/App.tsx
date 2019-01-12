@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import BestScore from './components/best-score';
 import PassCount from './components/pass-count';
 import Row from './components/row';
 import * as collection from './constants';
@@ -32,6 +33,7 @@ class App extends React.Component {
         return (
             <div className="App">
                 <PassCount />
+                <BestScore />
                 <button className="test-new-game" onClick={this.startGame}>New Game</button>
                 {Object.keys(this.state.field).map(key => (
                     <Row

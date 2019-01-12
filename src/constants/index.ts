@@ -17,4 +17,4 @@ export const PASS_TO_WIN: string = JSON.stringify({
     2: [9, 10, 11, 0],
     3: [13, 14, 15, 12],
 });
-export const TIME_OUT: number = 100;
+export const TIME_OUT: number = 80;
