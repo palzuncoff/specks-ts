@@ -1,0 +1,12 @@
+.speck {
+    font-family: 'Orbitron', sans-serif;
+    border-style: solid;
+    color: #37cfe7;
+    font-size: 30px;
+    height: 90px;
+    width: 90px;
+}
+
+.speck:hover {
+    color: #2be7bf;
+}

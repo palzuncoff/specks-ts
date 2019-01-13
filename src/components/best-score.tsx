@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './best-score.css'
 
 class BestScore extends React.Component {
     public state: IBestScore = {
@@ -14,9 +15,9 @@ class BestScore extends React.Component {
 
     public render(): React.ReactNode {
         return (
-            <div>
-                <div className="test-best-score" >Best result: {this.state.bestScore} passes</div>
-                <div className="test-worst-score" >Worst result: {this.state.worstScore} passes</div>
+            <div className="score">
+                <div className="test-best-score best" >Best result: {this.state.bestScore} passes</div>
+                <div className="test-worst-score best" >Worst result: {this.state.worstScore} passes</div>
             </div>
         );
     }

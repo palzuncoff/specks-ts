@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './speck.css'
 
 export interface ISpeck {
     end: boolean;
@@ -13,15 +14,8 @@ class Speck extends React.Component<ISpeck> {
     public render() {
         return (
             <button
-                style={{
-                    backgroundColor: this.color(),
-                    borderStyle: 'solid',
-                    color: 'yellow',
-                    fontSize: 30,
-                    height: '60px',
-                    width: '60px',
-                }}
-                className="test-speck-btn"
+                style={{ backgroundColor: this.color() }}
+                className="test-speck-btn speck"
                 onClick={this.handleOnMove}
                 disabled={this.props.end}
             >
@@ -37,7 +31,7 @@ class Speck extends React.Component<ISpeck> {
     private color = (): string => {
         const { raver, value } = this.props;
         if (value === 0) { return 'white' }
-        return raver === value ? 'red' : 'grey'
+        return raver === value ? 'yellow' : 'grey'
     }
 }
 

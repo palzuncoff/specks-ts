@@ -32,10 +32,11 @@ class App extends React.Component {
     public render() {
         return (
             <div className="App">
-                <PassCount />
-                <BestScore />
-                <button className="test-new-game" onClick={this.startGame}>New Game</button>
-                <div>
+                <div className="info">
+                    <PassCount />
+                    <BestScore />
+                </div>
+                <div className="field">
                     {Object.keys(this.state.field).map(key => (
                         <Row
                             key={key}
@@ -47,6 +48,12 @@ class App extends React.Component {
                         />
                     ))}
                 </div>
+                <button
+                    className="test-new-game new-game"
+                    onClick={this.startGame}
+                >
+                    New Game
+                </button>
             </div>
         );
     }

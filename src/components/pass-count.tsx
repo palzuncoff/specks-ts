@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './pass-count.css'
 
 class PassCount extends React.Component {
     public state: ICount = {
@@ -18,7 +19,11 @@ class PassCount extends React.Component {
 
     public render() {
         return (
-            <div className="test-pass-count-class" >Pass# {this.state.pass}</div>
+            <div
+                className="test-pass-count-class pass"
+            >
+                Pass# {this.state.pass}
+            </div>
         )
     }
 }
