@@ -17,6 +17,9 @@ describe('<App/>', () => {
         localStorage.setItem('field', defaultField);
         localStorage.setItem('pass', '0');
     });
+    afterEach(() => {
+        localStorage.clear();
+    });
     it('should move speck down', () => {
         const component: any = setUp();
         const button: any = component.find('.test-speck-btn').at(2);
@@ -130,5 +133,10 @@ describe('<App/>', () => {
         localStorage.setItem('best', '10');
         const component: any = setUp();
         expect(component.find('.test-best-score').text()).toEqual('Best result: 10 passes')
+    });
+    it('should show worst score', () => {
+        localStorage.setItem('worst', '1000');
+        const component: any = setUp();
+        expect(component.find('.test-worst-score').text()).toEqual('Worst result: 1000 passes')
     });
 });

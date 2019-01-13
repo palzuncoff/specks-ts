@@ -35,16 +35,18 @@ class App extends React.Component {
                 <PassCount />
                 <BestScore />
                 <button className="test-new-game" onClick={this.startGame}>New Game</button>
-                {Object.keys(this.state.field).map(key => (
-                    <Row
-                        key={key}
-                        updateField={this.updateField}
-                        rowIndex={+key}
-                        row={this.state.field[key]}
-                        raver={this.state.raver}
-                        end={this.state.end}
-                    />
-                ))}
+                <div>
+                    {Object.keys(this.state.field).map(key => (
+                        <Row
+                            key={key}
+                            updateField={this.updateField}
+                            rowIndex={+key}
+                            row={this.state.field[key]}
+                            raver={this.state.raver}
+                            end={this.state.end}
+                        />
+                    ))}
+                </div>
             </div>
         );
     }

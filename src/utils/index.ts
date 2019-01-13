@@ -72,7 +72,11 @@ export async function delay(arr: number[], callback: any) {
 export function storeBestScore() {
     const past: string | null = localStorage.getItem('best');
     const next: string = localStorage.getItem('pass') || 'Infinity';
+    const wpast: string | null = localStorage.getItem('worst');
     if (!past || +next < +past) {
         localStorage.setItem('best', next.toString());
+    }
+    if (!wpast || +next > +wpast) {
+        localStorage.setItem('worst', next.toString());
     }
 }

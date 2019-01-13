@@ -18,4 +18,5 @@ interface ICount {
 
 interface IBestScore {
     bestScore: string;
+    worstScore: string;
 }
