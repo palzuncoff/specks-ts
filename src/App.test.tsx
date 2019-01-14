@@ -78,7 +78,7 @@ describe('<App/>', () => {
         setTimeout(() => {
             expect(component.state().raver).toEqual(2);
             done();
-        }, collection.TIME_OUT * 3);
+        }, collection.TIME_OUT * 2.5);
     });
     it('should set end to false', (done) => {
         const component: any = setUp();
@@ -87,7 +87,7 @@ describe('<App/>', () => {
         setTimeout(() => {
             expect(component.state().end).toEqual(false);
             done();
-        }, collection.TIME_OUT * 18);
+        }, collection.TIME_OUT * 20);
     });
     it('should set end game', (done) => {
         localStorage.setItem('field', collection.PASS_TO_WIN);
@@ -108,7 +108,7 @@ describe('<App/>', () => {
         setTimeout(() => {
             expect(localStorage.getItem('best')).toEqual('1');
             done()
-        }, collection.TIME_OUT * 17);
+        }, collection.TIME_OUT * 20);
     });
     it('should start rave on win', (done) => {
         localStorage.setItem('field', collection.PASS_TO_WIN);
@@ -119,7 +119,7 @@ describe('<App/>', () => {
         setTimeout(() => {
             expect(component.state().raver).toEqual(2);
             done()
-        }, collection.TIME_OUT * 3);
+        }, collection.TIME_OUT * 2.5);
     });
     it('should desabled specks when win', () => {
         const component: any = setUp();
@@ -132,11 +132,11 @@ describe('<App/>', () => {
     it('should show best score', () => {
         localStorage.setItem('best', '10');
         const component: any = setUp();
-        expect(component.find('.test-best-score').text()).toEqual('Best result: 10 passes')
+        expect(component.find('.test-best-score').text()).toEqual('Best result# 10')
     });
     it('should show worst score', () => {
         localStorage.setItem('worst', '1000');
         const component: any = setUp();
-        expect(component.find('.test-worst-score').text()).toEqual('Worst result: 1000 passes')
+        expect(component.find('.test-worst-score').text()).toEqual('Worst result# 1000')
     });
 });

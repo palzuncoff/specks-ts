@@ -33,8 +33,8 @@ class App extends React.Component {
         return (
             <div className="App">
                 <div className="info">
-                    <PassCount />
                     <BestScore />
+                    <PassCount />
                 </div>
                 <div className="field">
                     {Object.keys(this.state.field).map(key => (

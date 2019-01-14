@@ -30,7 +30,7 @@ class Speck extends React.Component<ISpeck> {
 
     private color = (): string => {
         const { raver, value } = this.props;
-        if (value === 0) { return 'white' }
+        if (value === 0) { return 'black' }
         return raver === value ? 'yellow' : 'grey'
     }
 }
