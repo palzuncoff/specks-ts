@@ -10,6 +10,7 @@
   background-color: black;
   color: #2be7bf;
   border-radius: 10px;
+  border: solid darkgoldenrod;
   width: 360px;
   height: 100px;
   text-align: left;
@@ -24,6 +25,12 @@
 .new-game {
   margin: 20px;
   font-family: 'Orbitron', sans-serif;
+  height: 54px;
+  width: 193px;
+  border-radius: 8px;
+  color: red;
+  background-color: black;
+  font-size: 22px;
 }
 
 @keyframes App-logo-spin {
